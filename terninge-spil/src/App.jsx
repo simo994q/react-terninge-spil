@@ -1,5 +1,5 @@
 import { useState } from "react";
-import './App.css';
+import './App.scss';
 import { Players } from './components/Players/Players'
 import img1 from '../src/assets/Alea_1.png'
 import img2 from '../src/assets/Alea_2.png'
