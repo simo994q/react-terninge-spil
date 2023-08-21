@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import style from './App.scss'
+import { Players } from './components/Players/Players'
 
 function App() {
 
@@ -7,11 +8,11 @@ function App() {
 
   return (
     <div className={style.appContainer}>
-      <Player />
+      <Players />
         <div>
 
         </div>
-      <Player />
+      <Players />
     </div>
   )
 }
