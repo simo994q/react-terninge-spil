@@ -1,0 +1,29 @@
+.playerContainer {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+    
+
+    .playerNumber {
+        text-align: center;
+    }
+
+    .playerDiceRoll {
+
+        h3 {
+            text-align: center;
+        }
+
+        div {
+            text-align: center;
+        }
+    }
+
+    .playerPoints {
+        text-align: center;
+    }
+}
