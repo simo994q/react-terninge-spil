@@ -1,5 +1,6 @@
 import { useState } from "react";
-import "./App.css";
+import './App.css';
+import { Players } from './components/Players/Players'
 import img1 from '../src/assets/Alea_1.png'
 import img2 from '../src/assets/Alea_2.png'
 import img3 from '../src/assets/Alea_3.png'
@@ -15,7 +16,7 @@ function App() {
     img4,
     img5,
     img6
-   
+
   ];
 
   const [currentFace, setCurrentFace] = useState(Images[0]);
@@ -27,11 +28,13 @@ function App() {
 
   return (
     <>
-      <div>
+      <div className='appContainer'>
+        <Players />
         <div className="dice">
           <img src={currentFace}></img>
           <button onClick={rollDice}>Slå</button>
         </div>
+        <Players />
       </div>
     </>
   );

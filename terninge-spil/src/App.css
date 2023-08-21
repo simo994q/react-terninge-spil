@@ -1,13 +1,27 @@
-button{
-    padding: 30px;
-    background-color: orange;
-    border-radius: 5px;
-    border-color: orange;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.dice{
+.appContainer {
     display: flex;
-    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    flex-direction: row;
+    background: rgb(45, 122, 35);
+    background: radial-gradient(circle, rgba(45, 122, 35, 1) 0%, rgba(26, 65, 19, 1) 100%);
+
+    button{
+        padding: 30px;
+        background-color: orange;
+        border-radius: 5px;
+        border-color: orange;
+    }
+    
+    .dice{
+        display: flex;
+        flex-direction: column;
+    }
+    
 }
-
-
