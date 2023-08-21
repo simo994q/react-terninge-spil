@@ -1,0 +1,13 @@
+button{
+    padding: 30px;
+    background-color: orange;
+    border-radius: 5px;
+    border-color: orange;
+}
+
+.dice{
+    display: flex;
+    flex-direction: column;
+}
+
+
