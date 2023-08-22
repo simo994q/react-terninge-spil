@@ -11,12 +11,28 @@
     flex-direction: row;
     background: rgb(45, 122, 35);
     background: radial-gradient(circle, rgba(45, 122, 35, 1) 0%, rgba(26, 65, 19, 1) 100%);
+    align-items: center;
 
     button{
-        padding: 30px;
-        background-color: orange;
+        color: #ffffff;
+        font-size: 20px;
+        padding: 20px;
+        background-color: #FFE008;
         border-radius: 5px;
-        border-color: orange;
+        border-color:  #F2AD0F;
+        border-width: 5px;
+        border-style:outset;
+        margin: 10px;
+        cursor: pointer;
+
+    }
+
+    button:hover {
+        color: #ffdd00;
+        background-color: rgba(41, 146, 41, 0.6);
+        opacity: 0.6;
+        transition: 0.3s;
+        
     }
     
     .dice{
