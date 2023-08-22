@@ -84,7 +84,7 @@ function App() {
 
   return (
     <>
-      <div className='appContainer'>
+      <div className='appContainer'> 
         <Players playerPoints={playerOnePoints} playerRoll={playerOneRoll} player={1} />
         <div className="dice">
           <img src={currentFace}></img>

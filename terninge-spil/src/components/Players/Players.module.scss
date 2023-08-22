@@ -6,11 +6,27 @@
     justify-content: space-between;
     align-items: center;
     padding: 2rem;
+
     
 
     .playerNumber {
         text-align: center;
+        color:#F4CA03;
+        background-color: #228B4C;
+        border-radius: 10px;
+        border-color: #79D9A1;
+        border-width: 5px;
+        border-style:solid;
+        width: 30%;
+        height: 25%;
+        background-image: url(../src/assets/player1.png);
+        background-repeat: no-repeat;
+        background-size: 70%;
+        background-position-x: center;
+        background-position-y: 30px;
+
     }
+    
 
     .playerDiceRoll {
 
