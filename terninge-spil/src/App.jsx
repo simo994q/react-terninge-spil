@@ -82,6 +82,18 @@ function App() {
     }
   }
 
+
+  const reset = () => {
+    setCurrentFace(Images[0].image);
+    setCurrentRoll();
+    setPlayerTurn(1);
+    setPlayerOnePoints(0);
+    setPlayerTwoPoints(0);
+    setPlayerOneRoll();
+    setPlayerTwoRoll();
+
+  };
+
   return (
     <>
       <div className='appContainer'> 
@@ -89,6 +101,7 @@ function App() {
         <div className="dice">
           <img src={currentFace}></img>
           <button onClick={rollDice}>Slå</button>
+          <button onClick={reset}>Genstart</button>
         </div>
         <Players playerPoints={playerTwoPoints} playerRoll={playerTwoRoll} player={2} />
       </div>
