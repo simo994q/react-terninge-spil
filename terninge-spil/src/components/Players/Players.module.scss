@@ -26,12 +26,13 @@
         background-position-y: 30px;
 
     }
-    
 
     .playerDiceRoll {
 
         h3 {
             text-align: center;
+            color:#F4CA03;
+ 
         }
 
         div {
@@ -39,7 +40,19 @@
         }
     }
 
+
+
     .playerPoints {
         text-align: center;
+        color:#F4CA03;
+        background-color: #228B4C;
+        border-radius: 10px;
+        border-color: #79D9A1;
+        border-width: 5px;
+        border-style:solid;
+        width: 20%;
+        height: 10%;   
+        padding-top: 20px;
+
     }
 }
