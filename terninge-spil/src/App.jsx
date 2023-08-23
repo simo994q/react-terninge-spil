@@ -87,7 +87,7 @@ function App() {
     setPlayerOnePoints(0);
     setPlayerTwoPoints(0);
     setPlayerOneRoll(1);
-    setPlayerTwoRoll(1);
+    setPlayerTwoRoll(2);
     setWinner('');
     setGameWon(false)
   };
