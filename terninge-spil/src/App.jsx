@@ -90,7 +90,7 @@ function App() {
         </div>
           <button onClick={rollDice}>Slå</button>
           <button onClick={reset}>Genstart</button>
-          <p>{winner}</p>
+          <p className="winnerText">{winner}</p>
         </div>
         <Players playerPoints={playerTwoPoints} playerRoll={playerTwoRoll} player={2} />
       </div>
