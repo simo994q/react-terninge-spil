@@ -77,8 +77,10 @@ function App() {
       <div className='appContainer'>
         <Players playerPoints={playerOnePoints} playerRoll={playerOneRoll} player={1} />
         <div className="dice">
-          <img src={Images[Number(playerOneRoll - 1)].image}></img>
-          <img src={Images[Number(playerTwoRoll - 1)].image}></img>
+        <div className="imageContainer">
+          <img className="diceImage" src={Images[Number(playerOneRoll - 1)].image} alt="Dice 1" />
+          <img className="diceImage" src={Images[Number(playerTwoRoll - 1)].image} alt="Dice 2" />
+        </div>
           <button onClick={rollDice}>Slå</button>
           <button onClick={reset}>Genstart</button>
         </div>
