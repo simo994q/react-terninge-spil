@@ -81,14 +81,11 @@ function App() {
 
 
   const reset = () => {
-    setCurrentFace(Images[0].image);
-    setCurrentRoll();
-    setPlayerTurn(1);
     setPlayerOnePoints(0);
     setPlayerTwoPoints(0);
-    setPlayerOneRoll();
-    setPlayerTwoRoll();
-    setWinner(0);
+    setPlayerOneRoll(1);
+    setPlayerTwoRoll(1);
+    setWinner('');
 
   };
 
