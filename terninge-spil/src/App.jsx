@@ -20,10 +20,12 @@ function App() {
   ];
 
   const [playerOneRoll, setPlayerOneRoll] = useState(1)
-  const [playerTwoRoll, setPlayerTwoRoll] = useState(1)
+  const [playerTwoRoll, setPlayerTwoRoll] = useState(2)
 
   const [playerOnePoints, setPlayerOnePoints] = useState(0)
   const [playerTwoPoints, setPlayerTwoPoints] = useState(0)
+
+  const [tiedGame, setTiedGame] = useState(false)
 
   const [winner, setWinner] = useState('');
 
@@ -71,10 +73,12 @@ function App() {
   function calculateWin() {
     if (playerOneRoll > playerTwoRoll) {
       setPlayerOnePoints(playerOnePoints + 1)
+      setTiedGame(false)
     } else if (playerOneRoll < playerTwoRoll) {
       setPlayerTwoPoints(playerTwoPoints + 1)
+      setTiedGame(false)
     } else if (playerOneRoll === playerTwoRoll) {
-      alert('Tie Game')
+      setTiedGame(true)
     }
   }
 
@@ -93,6 +97,7 @@ function App() {
       <div className='appContainer'>
         <Players playerPoints={playerOnePoints} playerRoll={playerOneRoll} player={1} />
         <div className="dice">
+          <p style={{display: tiedGame ? 'block' : 'none'}}>Tie Game</p>
           <div className="imageContainer">
             <img className="diceImage" src={Images[Number(playerOneRoll - 1)].image} alt="Dice 1" />
             <img className="diceImage" src={Images[Number(playerTwoRoll - 1)].image} alt="Dice 2" />
