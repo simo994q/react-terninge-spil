@@ -50,9 +50,9 @@ function App() {
   };
 
   useEffect(() => {
-    if (playerOnePoints === 5) { setWinner('Spiller 1') }
-    if (playerTwoPoints === 5) { setWinner('Spiller 2') }
-  }, [playerOneRoll, playerTwoRoll])
+    if (playerOnePoints === 5) { setWinner('Spiller 1 vinder!') }
+    if (playerTwoPoints === 5) { setWinner('Spiller 2 vinder!') }
+  }, [playerOnePoints, playerTwoPoints])
 
   useEffect(() => {
     // if (playerOneRoll != 1 && playerTwoRoll != 1) {
