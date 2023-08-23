@@ -25,6 +25,8 @@ function App() {
   const [playerOnePoints, setPlayerOnePoints] = useState(0)
   const [playerTwoPoints, setPlayerTwoPoints] = useState(0)
 
+  const [winner, setWinner] = useState('');
+
   useEffect(() => {
     console.log(playerOneRoll, playerTwoRoll);
   }, [playerOneRoll, playerTwoRoll])
@@ -48,9 +50,14 @@ function App() {
   };
 
   useEffect(() => {
-    if (playerOneRoll != 1 && playerTwoRoll != 1) {
-      calculateWin()
-    }
+    if (playerOnePoints === 5) { setWinner('Spiller 1 vinder!') }
+    if (playerTwoPoints === 5) { setWinner('Spiller 2 vinder!') }
+  }, [playerOnePoints, playerTwoPoints])
+
+  useEffect(() => {
+    // if (playerOneRoll != 1 && playerTwoRoll != 1) {
+    calculateWin()
+    // }
   }, [playerOneRoll, playerTwoRoll])
 
   function calculateWin() {
@@ -69,7 +76,7 @@ function App() {
     setPlayerTwoPoints(0);
     setPlayerOneRoll(1);
     setPlayerTwoRoll(1);
-
+    setWinner('');
   };
 
   return (
@@ -83,6 +90,7 @@ function App() {
         </div>
           <button onClick={rollDice}>Slå</button>
           <button onClick={reset}>Genstart</button>
+          <p>{winner}</p>
         </div>
         <Players playerPoints={playerTwoPoints} playerRoll={playerTwoRoll} player={2} />
       </div>
