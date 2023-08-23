@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import './App.scss';
 import { Players } from './components/Players/Players'
 import img1 from '../src/assets/Alea_1.png'
@@ -19,66 +19,47 @@ function App() {
     { image: img6, number: 6 }
   ];
 
-  // Holder styr på hvad der er blevet rullet, både billede og nummer
-  const [currentFace, setCurrentFace] = useState(Images[0].image);
-  const [currentRoll, setCurrentRoll] = useState()
+  const [playerOneRoll, setPlayerOneRoll] = useState(1)
+  const [playerTwoRoll, setPlayerTwoRoll] = useState(1)
 
-  // State der bestemmer hvilken spillers tur det er, som skifter mellem 1 og 2
-  const [playerTurn, setPlayerTurn] = useState(1)
-
-  // Holder styr på hvad de to spillere sidst har rullet
-  const [playerOneRoll, setPlayerOneRoll] = useState()
-  const [playerTwoRoll, setPlayerTwoRoll] = useState()
-
-  // Holder styr på de to spilleres point
   const [playerOnePoints, setPlayerOnePoints] = useState(0)
   const [playerTwoPoints, setPlayerTwoPoints] = useState(0)
 
-  // Funktionen der ruller terningen
-  const rollDice = () => {
-    // Vælger et random object fra Images arrayet der vælger hvad der er blevet rullet
+  useEffect(() => {
+    console.log(playerOneRoll, playerTwoRoll);
+  }, [playerOneRoll, playerTwoRoll])
+
+  const getPlayerOneRoll = () => {
     const randomIndex = Math.floor(Math.random() * Images.length);
-    // Ændrer currentFace og currentRoll til det der senest er blevet rullet
-    setCurrentFace(Images[randomIndex].image);
-    setCurrentRoll(Images[randomIndex].number)
-
-    // Hvis det er spiller 1 tur...
-    if (playerTurn === 1) {
-      // ...Så ændrer den playerOneRoll til hvad der er blevet rullet...
-      setPlayerOneRoll(currentRoll)
-      // ...Og turen skifter til spiller 2
-      setPlayerTurn(2)
-      console.log(playerOneRoll);
-
-      // Hvis det er spiller 2 tur...
-    } else if (playerTurn === 2) {
-      // ...Så ændrer den playerTwoRoll til hvad der er blevet rullet...
-      setPlayerTwoRoll(currentRoll)
-      // Beregner om de to tal der er blevet slået er lige store
-      if (playerOneRoll === playerTwoRoll) {
-        // Hvis de er lige store, så kører tieGame
-        tieGame()
-      } else {
-        // Hvis de ikke er lige store, så kører calculateWin
-        calculateWin()
-      }
-      // ...Og turen skifter til spiller 2
-      setPlayerTurn(1)
-      console.log(playerTwoRoll);
-    }
-  };
-
-  // Fortæller hvis terningerne slår det samme, så ingen af spillerne får point
-  function tieGame() {
-    alert('Tie Game!')
+    const randomNumber = Images[randomIndex].number
+    setPlayerOneRoll(randomNumber)
   }
 
-  // Udregner hvem der har vundet spillet, og giver 1 point til den spiller der har
+  const getPlayerTwoRoll = () => {
+    const randomIndex = Math.floor(Math.random() * Images.length);
+    const randomNumber = Images[randomIndex].number
+    setPlayerTwoRoll(randomNumber)
+  }
+
+  // Funktionen der ruller terningen
+  const rollDice = () => {
+    getPlayerOneRoll()
+    getPlayerTwoRoll()
+  };
+
+  useEffect(() => {
+    if (playerOneRoll != 1 && playerTwoRoll != 1) {
+      calculateWin()
+    }
+  }, [playerOneRoll, playerTwoRoll])
+
   function calculateWin() {
     if (playerOneRoll > playerTwoRoll) {
       setPlayerOnePoints(playerOnePoints + 1)
-    } else {
+    } else if (playerOneRoll < playerTwoRoll) {
       setPlayerTwoPoints(playerTwoPoints + 1)
+    } else if (playerOneRoll === playerTwoRoll) {
+      alert('Tie Game')
     }
   }
 
@@ -96,10 +77,11 @@ function App() {
 
   return (
     <>
-      <div className='appContainer'> 
+      <div className='appContainer'>
         <Players playerPoints={playerOnePoints} playerRoll={playerOneRoll} player={1} />
         <div className="dice">
-          <img src={currentFace}></img>
+          <img src={Images[Number(playerOneRoll - 1)].image}></img>
+          <img src={Images[Number(playerTwoRoll - 1)].image}></img>
           <button onClick={rollDice}>Slå</button>
           <button onClick={reset}>Genstart</button>
         </div>
