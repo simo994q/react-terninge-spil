@@ -6,7 +6,7 @@ export function Players(props) {
             <h2 className={style.playerNumber}>Spiller {props.player}</h2>
             <div className={style.playerDiceRoll}>
                 <h3>Du slog:</h3>
-                <p>{props.playerRoll}</p>
+                <p className={style.diceRollValue}>{props.playerRoll}</p>
             </div>
             <h3 className={style.playerPoints}>Point: {props.playerPoints}</h3>
         </div>
