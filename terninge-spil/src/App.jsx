@@ -25,7 +25,7 @@ function App() {
   const [playerOnePoints, setPlayerOnePoints] = useState(0)
   const [playerTwoPoints, setPlayerTwoPoints] = useState(0)
 
-  const [winner, setWinner] =useState('setWinner');
+  const [winner, setWinner] = useState('');
 
   useEffect(() => {
     console.log(playerOneRoll, playerTwoRoll);
@@ -49,32 +49,23 @@ function App() {
     getPlayerTwoRoll()
   };
 
-  useEffect(() =>{
-    if (playerOnePoints === 5){setWinner('Spiller 1')}
-
-    if (playerTwoPoints === 5){setWinner('Spiller 2')}
-
-
-  },[playerOneRoll, playerTwoRoll])
-
-    
-
+  useEffect(() => {
+    if (playerOnePoints === 5) { setWinner('Spiller 1') }
+    if (playerTwoPoints === 5) { setWinner('Spiller 2') }
+  }, [playerOneRoll, playerTwoRoll])
 
   useEffect(() => {
-    if (playerOneRoll != 1 && playerTwoRoll != 1) {
-      calculateWin()
-    }
+    // if (playerOneRoll != 1 && playerTwoRoll != 1) {
+    calculateWin()
+    // }
   }, [playerOneRoll, playerTwoRoll])
 
   function calculateWin() {
     if (playerOneRoll > playerTwoRoll) {
-     
       setPlayerOnePoints(playerOnePoints + 1)
     } else if (playerOneRoll < playerTwoRoll) {
-
       setPlayerTwoPoints(playerTwoPoints + 1)
     } else if (playerOneRoll === playerTwoRoll) {
-    
       alert('Tie Game')
     }
   }
@@ -86,7 +77,6 @@ function App() {
     setPlayerOneRoll(1);
     setPlayerTwoRoll(1);
     setWinner('');
-
   };
 
   return (
@@ -98,7 +88,7 @@ function App() {
           <img src={Images[Number(playerTwoRoll - 1)].image}></img>
           <button onClick={rollDice}>Slå</button>
           <button onClick={reset}>Genstart</button>
-          <p>{`${winner} vinder!`}</p>
+          <p>{winner}</p>
         </div>
         <Players playerPoints={playerTwoPoints} playerRoll={playerTwoRoll} player={2} />
       </div>
