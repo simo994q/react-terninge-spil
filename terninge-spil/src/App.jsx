@@ -97,7 +97,7 @@ function App() {
       <div className='appContainer'>
         <Players playerPoints={playerOnePoints} playerRoll={playerOneRoll} player={1} />
         <div className="dice">
-          <p style={{display: tiedGame ? 'block' : 'none'}}>Tie Game</p>
+          <p className="tieText" style={{display: tiedGame ? 'block' : 'none'}}>Tie Game</p>
           <div className="imageContainer">
             <img className="diceImage" src={Images[Number(playerOneRoll - 1)].image} alt="Dice 1" />
             <img className="diceImage" src={Images[Number(playerTwoRoll - 1)].image} alt="Dice 2" />
