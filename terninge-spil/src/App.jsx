@@ -27,6 +27,8 @@ function App() {
 
   const [winner, setWinner] = useState('');
 
+  const [gameWon, setGameWon] = useState(false)
+
   useEffect(() => {
     console.log(playerOneRoll, playerTwoRoll);
   }, [playerOneRoll, playerTwoRoll])
@@ -50,8 +52,14 @@ function App() {
   };
 
   useEffect(() => {
-    if (playerOnePoints === 5) { setWinner('Spiller 1 vinder!') }
-    if (playerTwoPoints === 5) { setWinner('Spiller 2 vinder!') }
+    if (playerOnePoints === 5) {
+      setWinner('Spiller 1 vinder!')
+      setGameWon(true)
+    }
+    if (playerTwoPoints === 5) {
+      setWinner('Spiller 2 vinder!')
+      setGameWon(true)
+    }
   }, [playerOnePoints, playerTwoPoints])
 
   useEffect(() => {
@@ -77,6 +85,7 @@ function App() {
     setPlayerOneRoll(1);
     setPlayerTwoRoll(1);
     setWinner('');
+    setGameWon(false)
   };
 
   return (
@@ -84,11 +93,11 @@ function App() {
       <div className='appContainer'>
         <Players playerPoints={playerOnePoints} playerRoll={playerOneRoll} player={1} />
         <div className="dice">
-        <div className="imageContainer">
-          <img className="diceImage" src={Images[Number(playerOneRoll - 1)].image} alt="Dice 1" />
-          <img className="diceImage" src={Images[Number(playerTwoRoll - 1)].image} alt="Dice 2" />
-        </div>
-          <button onClick={rollDice}>Slå</button>
+          <div className="imageContainer">
+            <img className="diceImage" src={Images[Number(playerOneRoll - 1)].image} alt="Dice 1" />
+            <img className="diceImage" src={Images[Number(playerTwoRoll - 1)].image} alt="Dice 2" />
+          </div>
+          <button onClick={rollDice} style={{display: gameWon ? "none" : "inline-block"}}>Slå</button>
           <button onClick={reset}>Genstart</button>
           <p>{winner}</p>
         </div>
